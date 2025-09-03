@@ -15,7 +15,6 @@ function App() {
       <Navgate></Navgate>
       <Intro></Intro>
       <About></About>
-
       
 
       {/* Projects Section */}
