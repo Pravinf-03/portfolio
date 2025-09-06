@@ -1,4 +1,5 @@
 from django.db import models
+from cloudinary_storage.storage import MediaCloudinaryStorage
 
 # Model for storing basic user profile
 class PersonalInfo(models.Model):
@@ -7,7 +8,7 @@ class PersonalInfo(models.Model):
     contact = models.CharField(max_length=100)
     email = models.EmailField()
     bio = models.TextField()
-    profile_photo = models.ImageField(upload_to='profile_photos/')
+    profile_photo = models.ImageField(storage=MediaCloudinaryStorage(), upload_to='profile_photos/')
 
 class WorkExperience(models.Model):
     role = models.CharField(max_length=100)

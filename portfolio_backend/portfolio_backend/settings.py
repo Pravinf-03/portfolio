@@ -13,15 +13,24 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 from pathlib import Path
 import os
 from decouple import config
+#import cloudinary
+#import cloudinary.uploader
+#import cloudinary.api
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+"""cloudinary.config(
+    cloud_name='dyunzfebt',
+    api_key='356893113111874',
+    api_secret='4plZqx7Rzakdq6ng0Rf5H4aH4UA'
+)"""
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
+DEBUG = config('DEBUG')
 SECRET_KEY = config('SECRET_KEY')
 
 ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=lambda v: [s.strip() for s in v.split(',')])
@@ -29,6 +38,8 @@ ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=lambda v: [s.strip() for s in v.spl
 # Application definition
 
 INSTALLED_APPS = [
+    'cloudinary',
+    'cloudinary_storage',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -37,7 +48,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'pFolio',
-    'corsheaders'
+    'corsheaders',
+    
 ]
 
 MIDDLEWARE = [
@@ -121,15 +133,24 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
-STATIC_URL = 'static/'
-STATIC_ROOT = BASE_DIR / 'staticfiles'
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATIC_URL = config('STATIC_URL')
+
+#Only on production
+STATIC_ROOT = BASE_DIR / config('STATIC_ROOT')
+STATICFILES_STORAGE = config('STATICFILES_STORAGE')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-BASE_DIR = Path(__file__).resolve().parent.parent
-MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / 'media'
+# Media storage
+MEDIA_URL=config('MEDIA_URL')
+DEFAULT_FILE_STORAGE = "cloudinary_storage.storage.MediaCloudinaryStorage"
+#CLOUDINARY_URL=config('CLOUDINARY_URL')
+
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME' : 'dyunzfebt',
+    'API_SECRET' : '4plZqx7Rzakdq6ng0Rf5H4aH4UA',
+    'API_KEY' : '356893113111874'
+}
