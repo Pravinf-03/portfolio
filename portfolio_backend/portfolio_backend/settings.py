@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 from pathlib import Path
 import os
 from decouple import config
+import json
 #import cloudinary
 #import cloudinary.uploader
 #import cloudinary.api
@@ -147,7 +148,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Media storage
 MEDIA_URL=config('MEDIA_URL')
 DEFAULT_FILE_STORAGE = "cloudinary_storage.storage.MediaCloudinaryStorage"
-if not DEBUG:
-    CLOUDINARY_URL = config('CLOUDINARY_URL')
+if DEBUG:
+    CLOUDINARY_STORAGE = json.loads(config('CLOUDINARY_STORAGE'))       #it is for the development
 else:
-    CLOUDINARY_STORAGE = config('CLOUDINARY_STORAGE')
+    CLOUDINARY_URL = config('CLOUDINARY_URL')       #it is for the production
