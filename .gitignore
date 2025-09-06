@@ -1,2 +1,3 @@
 .venv/
 portfolio_backend/.env
+portfolio_frontend/.env

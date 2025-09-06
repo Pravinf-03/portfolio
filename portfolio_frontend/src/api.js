@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "https://portfolio-1-t4b1.onrender.com/api/", // Django API runs here
+  baseURL: process.env.REACT_APP_API_URL
 });
 
 export default api;
