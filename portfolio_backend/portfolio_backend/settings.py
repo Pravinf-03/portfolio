@@ -12,20 +12,12 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 
 from pathlib import Path
 import os
-from decouple import config
+from decouple import config, Csv
 import json
-#import cloudinary
-#import cloudinary.uploader
-#import cloudinary.api
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
-"""cloudinary.config(
-    cloud_name='dyunzfebt',
-    api_key='356893113111874',
-    api_secret='4plZqx7Rzakdq6ng0Rf5H4aH4UA'
-)"""
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
@@ -34,7 +26,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 DEBUG = config('DEBUG')
 SECRET_KEY = config('SECRET_KEY')
 
-ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=lambda v: [s.strip() for s in v.split(',')])
+ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
+CORS_ALLOWED_ORIGINS = config("CORS_ALLOWED_ORIGINS", cast=Csv())
 
 # Application definition
 
