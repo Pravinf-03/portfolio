@@ -45,7 +45,7 @@ function App() {
                   purpose, and key achievements.
                 </p>
                 <a
-                  href="#"
+                  href="#introduction"
                   className="mt-4 inline-block text-blue-400 font-medium hover:underline"
                 >
                   View Details →
