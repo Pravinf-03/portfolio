@@ -88,20 +88,8 @@ WSGI_APPLICATION = 'portfolio_backend.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
-if DEBUG:
-    DATABASES = {
-        'default': {
-            'ENGINE': config('ENGINE'),
-            'NAME': config('NAME'),
-            'USER': config('DB_USER', default='pfolio'),
-            'PASSWORD': config('PASSWORD'),
-            'HOST': config('HOST'),
-            'PORT': config('PORT'),
-        }
-    }
 
-else:
-    DATABASES = {
+DATABASES = {
         "default": dj_database_url.config(
             default=config('DATABASE_URL')
         )
