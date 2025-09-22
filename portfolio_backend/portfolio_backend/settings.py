@@ -30,7 +30,7 @@ DEBUG = config('DEBUG')
 SECRET_KEY = config('SECRET_KEY')
 
 ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
-CORS_ALLOWED_ORIGINS = config("CORS_ALLOWED_ORIGINS", cast=Csv())
+CORS_ALLOWED_ORIGINS = config('CORS_ALLOWED_ORIGINS')
 
 # Application definition
 
@@ -43,10 +43,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'rest_framework',
-    'pFolio',
     'corsheaders',
-    
+    'rest_framework',
+    'pFolio',    
 ]
 
 MIDDLEWARE = [
@@ -59,10 +58,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',    
-]
-
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",
 ]
 
 ROOT_URLCONF = 'portfolio_backend.urls'
