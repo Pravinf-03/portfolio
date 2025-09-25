@@ -4,6 +4,8 @@ import { motion } from "framer-motion";
 import Intro from "./components/Intro";
 import Navgate from "./components/Navgate";
 import About from "./components/About";
+import Projects from "./components/Projects";
+import Experience from "./components/Experience";
 
 // Smooth scroll
 
@@ -15,46 +17,8 @@ function App() {
       <Navgate></Navgate>
       <Intro></Intro>
       <About></About>
-      
-
-      {/* Projects Section */}
-      <section id="projects" className="py-20 bg-gray-800">
-        <div className="container mx-auto px-6">
-          <motion.h2
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="text-3xl font-bold text-center mb-12"
-          >
-            Projects
-          </motion.h2>
-          <div className="grid md:grid-cols-3 gap-8">
-            {[1, 2, 3].map((project) => (
-              <motion.div
-                key={project}
-                className="bg-gray-900 rounded-2xl shadow hover:shadow-lg transition p-6"
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: project * 0.2 }}
-                viewport={{ once: true }}
-              >
-                <h3 className="text-xl font-semibold mb-2">Project {project}</h3>
-                <p className="text-gray-400">
-                  A brief description of the project goes here. Highlight technologies,
-                  purpose, and key achievements.
-                </p>
-                <a
-                  href="#introduction"
-                  className="mt-4 inline-block text-blue-400 font-medium hover:underline"
-                >
-                  View Details →
-                </a>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <Experience></Experience>
+      <Projects></Projects>
 
       {/* Contact Section */}
       <section id="contact" className="py-20 container mx-auto px-6">

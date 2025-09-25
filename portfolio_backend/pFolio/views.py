@@ -8,7 +8,7 @@ class PersonalInfoList(generics.ListAPIView):
     serializer_class = PersonalInfoSerializer
 
 class WorkExperienceList(generics.ListAPIView):
-    queryset = WorkExperience.objects.all()
+    queryset = WorkExperience.objects.all().order_by('-start_date')
     serializer_class = WorkExperienceSerializer
 
 class SkillList(generics.ListAPIView):
@@ -20,5 +20,5 @@ class EducationList(generics.ListAPIView):
     serializer_class = EducationSerializer
 
 class ProjectList(generics.ListAPIView):
-    queryset = Project.objects.all()
+    queryset = Project.objects.all().order_by('start_date')
     serializer_class = ProjectSerializer
